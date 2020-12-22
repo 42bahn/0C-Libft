@@ -10,12 +10,32 @@
 #                                                                              #
 # **************************************************************************** #
 
-SRC = main.c ft_*
-NAME = a.out
+DIR_OBJS = ./
+OBJS = $(addprefix $(DIR_OBJS), $(addsuffix -o, $(FILES)))
+DIR_SRCS = ./
+SRCS = $(addprefix $(DIR_SRCS), $(addsuffix -c, $(FILES)))
 
-$(NAME) : $(SRC)
-	gcc $(SRC)
+SRC = main.c ft_strlen.c
 
-coucou : 
-	echo salut
-	echo bonjour
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror -g -l.
+AR = ar crs
+RM = rm -f
+
+NAME = libft.a
+
+all : $(NAME)
+
+$(NAME) : $(OBJS)
+	$(AR) $(NAME) $(OBJS)
+
+clean : 
+	$(RM) $(OBJS)
+
+fclean : clean
+	$(RM) $(NAME)
+
+re : fclean all
+
+$(OBJS) : $(SRCS)
+	$(CC) $(CFLAGS) -c $(SRCS)
