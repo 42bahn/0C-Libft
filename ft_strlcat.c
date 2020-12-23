@@ -6,12 +6,14 @@
 /*   By: bahn <bahn@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/21 15:42:03 by bahn              #+#    #+#             */
-/*   Updated: 2020/12/23 17:43:13 by bahn             ###   ########.fr       */
+/*   Updated: 2020/12/23 20:43:53 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-unsigned int	ft_return(unsigned int size, unsigned int dst_len,
-unsigned int src_len)
+#include "libft.h"
+
+size_t	ft_return(size_t size, size_t dst_len,
+size_t src_len)
 {
 	if (size >= dst_len)
 		return (src_len + dst_len);
@@ -19,15 +21,15 @@ unsigned int src_len)
 		return (src_len + size);
 }
 
-unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
+size_t	ft_strlcat(char *dest, char *src, size_t size)
 {
-	unsigned int	i;
-	unsigned int	j;
-	unsigned int	dest_len;
+	size_t	i;
+	size_t	j;
+	size_t	dest_len;
 
 	i = 0;
 	j = 0;
-	dest_len = (unsigned int)ft_strlen(dest);
+	dest_len = (size_t)ft_strlen(dest);
 	while (dest[i] != '\0')
 		i++;
 	while (j + dest_len + 1 < size && src[j] != '\0')

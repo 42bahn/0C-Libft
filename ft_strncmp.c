@@ -6,13 +6,15 @@
 /*   By: bahn <bahn@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/21 15:43:04 by bahn              #+#    #+#             */
-/*   Updated: 2020/12/21 15:43:05 by bahn             ###   ########.fr       */
+/*   Updated: 2020/12/23 20:45:52 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strncmp(char *s1, char *s2, unsigned int n)
+#include "libft.h"
+
+int	ft_strncmp(char *s1, char *s2, size_t n)
 {
-	unsigned int i;
+	size_t i;
 
 	i = 0;
 	while (i < n && s1[i] != '\0')

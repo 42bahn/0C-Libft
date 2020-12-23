@@ -6,14 +6,16 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/23 16:37:40 by bahn              #+#    #+#             */
-/*   Updated: 2020/12/23 17:48:00 by bahn             ###   ########.fr       */
+/*   Updated: 2020/12/23 20:46:08 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strnstr(char *dest, char *src, unsigned int size)
+#include "libft.h"
+
+char	*ft_strnstr(char *dest, char *src, size_t size)
 {
-	unsigned	int	i;
-	unsigned	int	j;
+	size_t	i;
+	size_t	j;
 
 	i = 0;
 	j = 0;
