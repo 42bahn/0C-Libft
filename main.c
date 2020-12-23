@@ -16,7 +16,8 @@ int main(void)
 {
 	char str3[] = "        -+--+-+++-1234a5";
 
-    	printf("atoi : %d\n", ft_atoi(str3));
+    	printf("%d\n", ft_strlen(str3));
+	printf("atoi : %d\n", ft_atoi(str3));
 	printf("=> ascii : %s\n", str3);
 
 	return (0);
