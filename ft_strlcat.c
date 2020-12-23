@@ -6,11 +6,9 @@
 /*   By: bahn <bahn@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/21 15:42:03 by bahn              #+#    #+#             */
-/*   Updated: 2020/12/21 21:07:58 by bahn             ###   ########.fr       */
+/*   Updated: 2020/12/23 17:43:13 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-int	ft_strlen(char *str);
 
 unsigned int	ft_return(unsigned int size, unsigned int dst_len,
 unsigned int src_len)
@@ -29,7 +27,7 @@ unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 
 	i = 0;
 	j = 0;
-	dest_len = (unsigned int) ft_strlen(dest);
+	dest_len = (unsigned int)ft_strlen(dest);
 	while (dest[i] != '\0')
 		i++;
 	while (j + dest_len + 1 < size && src[j] != '\0')
