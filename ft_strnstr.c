@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/12/23 16:37:40 by bahn              #+#    #+#             */
+/*   Updated: 2020/12/23 16:50:44 by bahn             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 char	*ft_strnstr(char *dest, char *src, unsigned int size)
 {
 	unsigned int 	i;
@@ -21,16 +33,4 @@ char	*ft_strnstr(char *dest, char *src, unsigned int size)
 		i++;
 	}
 	return (0);
-}
-
-#include <string.h>
-#include <stdio.h>
-int main()
-{
-	char dest[] = "Manner Maketh Man.";
-	char src[] = "Maketh";
-	printf("%s\n", ft_strnstr(dest, src, 3));
-	printf("%p\n", ft_strnstr(dest, src, 3));
-	//printf("%d\n", strnstr(dest, src, 30));
-	//printf("%p\n", strnstr(dest, src, 30));
 }
