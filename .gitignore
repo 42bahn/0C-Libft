@@ -1,3 +1,6 @@
 libft-war-machine/
+libft-unit-test/
+test/
+libft/
 main.c
 a.out

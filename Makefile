@@ -6,34 +6,36 @@
 #    By: bahn <bahn@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/21 15:47:18 by bahn              #+#    #+#              #
-#    Updated: 2020/12/23 21:34:49 by bahn             ###   ########.fr        #
+#    Updated: 2020/12/24 12:57:40 by bahn             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-DIR_OBJS = ./
-OBJS = $(addprefix $(DIR_OBJS), $(addsuffix .o, $(FILES)))
-DIR_SRCS = ./
-SRCS = $(addprefix $(DIR_SRCS), $(addsuffix .c, $(FILES)))
+DIR_OBJS	= ./
+OBJS		= $(addprefix $(DIR_OBJS), $(addsuffix .o, $(FILES)))
+DIR_SRCS	= ./
+SRCS		= $(addprefix $(DIR_SRCS), $(addsuffix .c, $(FILES)))
 
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror -g -l.
-AR = ar crs
-RM = rm -f
+CC		= gcc
+CFLAGS		= -Wall -Wextra -Werror -g -L.
 
-NAME = libft.a
+AR		= ar crs
+RM		= rm -f
 
-all : $(NAME)
+NAME		= libft.a
 
-$(NAME) : $(OBJS)
-	$(AR) $(NAME) $(OBJS)
+all:		$(NAME)
 
-clean : 
-	$(RM) $(OBJS)
+$(NAME):	$(OBJS)
+		$(AR) $(NAME) $(OBJS)
 
-fclean : clean
-	$(RM) $(NAME)
+clean: 
+		$(RM) $(OBJS)
 
-re : fclean all
+fclean: 	clean
+		$(RM) $(NAME)
 
-$(OBJS) : $(SRCS)
-	$(CC) $(CFLAGS) -c $(SRCS)
+re: 		fclean all
+
+$(OBJS): 	$(SRCS)
+		$(CC) $(CFLAGS) -c $(SRCS)
+.PHONY:	
