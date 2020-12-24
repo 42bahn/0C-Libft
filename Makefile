@@ -6,7 +6,7 @@
 #    By: bahn <bahn@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/21 15:47:18 by bahn              #+#    #+#              #
-#    Updated: 2020/12/24 12:57:40 by bahn             ###   ########.fr        #
+#    Updated: 2020/12/24 15:01:00 by bahn             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,4 +38,5 @@ re: 		fclean all
 
 $(OBJS): 	$(SRCS)
 		$(CC) $(CFLAGS) -c $(SRCS)
-.PHONY:	
+
+.PHONY:		all clean fclean re
