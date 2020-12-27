@@ -6,7 +6,7 @@
 #    By: bahn <bahn@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/21 15:47:18 by bahn              #+#    #+#              #
-#    Updated: 2020/12/27 01:04:23 by bahn             ###   ########.fr        #
+#    Updated: 2020/12/27 14:53:41 by bahn             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,9 @@ RM		= rm -f
 
 NAME		= libft.a
 
+.c.o:		$(SRCS)
+		$(CC) $(CFLAGS) -c -o $@ $<
+
 all:		$(NAME)
 
 $(NAME):	$(OBJS)
@@ -51,8 +54,5 @@ fclean: 	clean
 		$(RM) $(NAME)
 
 re: 		fclean all
-
-$(OBJS): 	$(SRCS)
-		$(CC) $(CFLAGS) -c $(SRCS)
 
 .PHONY:		all clean fclean re
