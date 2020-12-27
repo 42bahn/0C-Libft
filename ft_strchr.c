@@ -6,7 +6,7 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/23 16:36:09 by bahn              #+#    #+#             */
-/*   Updated: 2020/12/27 16:28:32 by bahn             ###   ########.fr       */
+/*   Updated: 2020/12/27 18:27:21 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	*ft_strchr(char *str, int c)
 			ptr++;
 		}
 	}
-	//if (*ptr == c)
-	//	return (ptr);
+	if (*ptr == c)
+		return (ptr);
 	return (0);
 }
