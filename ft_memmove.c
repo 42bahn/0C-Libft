@@ -6,7 +6,7 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/27 20:24:18 by bahn              #+#    #+#             */
-/*   Updated: 2020/12/27 22:01:36 by bahn             ###   ########.fr       */
+/*   Updated: 2020/12/27 22:11:08 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	size_t		i;
+	size_t			i;
 	unsigned char	*dptr;
 	unsigned char	*sptr;
 
@@ -30,7 +30,7 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	{
 		i = n;
 		while (i-- > 0)
-			*(dptr + i) = *(sptr + i); 
+			*(dptr + i) = *(sptr + i);
 	}
 	return (dest);
 }

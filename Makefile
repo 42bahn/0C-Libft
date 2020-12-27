@@ -6,7 +6,7 @@
 #    By: bahn <bahn@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/21 15:47:18 by bahn              #+#    #+#              #
-#    Updated: 2020/12/27 14:53:41 by bahn             ###   ########.fr        #
+#    Updated: 2020/12/27 22:09:54 by bahn             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,14 @@ FILES =	ft_strlen \
 	ft_isprint \
 	ft_toupper \
 	ft_tolower \
+	ft_memset \
+	ft_bzero \
+	ft_memcpy \
+	ft_memccpy \
+	ft_memchr \
+	ft_memmove \
+	ft_memcmp \
+	ft_strdup
 
 DIR_OBJS	= ./
 OBJS		= $(addprefix $(DIR_OBJS), $(addsuffix .o, $(FILES)))
