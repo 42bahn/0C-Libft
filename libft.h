@@ -6,7 +6,7 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/23 20:51:15 by bahn              #+#    #+#             */
-/*   Updated: 2020/12/23 21:10:51 by bahn             ###   ########.fr       */
+/*   Updated: 2020/12/27 16:23:52 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 # define LIBFT_H
 # include <unistd.h>
 # include <stdlib.h>
+# include <string.h>
+# include <stddef.h>
+# include <ctype.h>
+# include <stdio.h>
 
 int		ft_strlen(char *str);
 size_t		ft_strlcpy(char *dest, char *src, size_t size);
