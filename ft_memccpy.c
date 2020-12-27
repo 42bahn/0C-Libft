@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fT_memccpy.c                                       :+:      :+:    :+:   */
+/*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/27 20:19:32 by bahn              #+#    #+#             */
-/*   Updated: 2020/12/27 20:22:31 by bahn             ###   ########.fr       */
+/*   Updated: 2020/12/27 23:01:22 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,11 @@ void	*ft_memccpy(void *dest, const void *src, int c, size_t n)
 	while (n--)
 	{
 		*dptr = *sptr++;
-		if (*dptr++ == c)
+		if (*dptr == c)
 			break ;
+		dptr++;
 	}
-	return (dest);
+	if (*dptr != c)
+		return (0);
+	return (++dptr);
 }
