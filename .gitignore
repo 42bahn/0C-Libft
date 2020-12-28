@@ -3,5 +3,6 @@ libft-unit-test/
 Libftest/
 test/
 libft/
+libft.h.gch
 main.c
 a.out
