@@ -6,7 +6,7 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 16:01:24 by bahn              #+#    #+#             */
-/*   Updated: 2020/12/28 16:51:02 by bahn             ###   ########.fr       */
+/*   Updated: 2020/12/28 16:57:09 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	char	*result;
 	char	*s1_ptr;
 	size_t	i;
-	
+
 	s1_ptr = (char *)s1;
 	result = malloc(ft_strlen((char *)s1) + 1);
 	if (!result)
