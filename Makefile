@@ -6,7 +6,7 @@
 #    By: bahn <bahn@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/21 15:47:18 by bahn              #+#    #+#              #
-#    Updated: 2020/12/27 22:09:54 by bahn             ###   ########.fr        #
+#    Updated: 2020/12/28 12:44:07 by bahn             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,7 @@ FILES =	ft_strlen \
 	ft_memchr \
 	ft_memmove \
 	ft_memcmp \
+	ft_calloc \
 	ft_strdup
 
 DIR_OBJS	= ./

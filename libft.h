@@ -6,7 +6,7 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/23 20:51:15 by bahn              #+#    #+#             */
-/*   Updated: 2020/12/28 11:41:49 by bahn             ###   ########.fr       */
+/*   Updated: 2020/12/28 12:42:51 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # include <stddef.h>
 # include <ctype.h>
 # include <stdio.h>
-# include <malloc.h>
 
 int		ft_strlen(char *str);
 size_t		ft_strlcpy(char *dest, char *src, size_t size);
