@@ -6,7 +6,7 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/23 20:51:15 by bahn              #+#    #+#             */
-/*   Updated: 2020/12/27 21:20:22 by bahn             ###   ########.fr       */
+/*   Updated: 2020/12/28 11:41:49 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stddef.h>
 # include <ctype.h>
 # include <stdio.h>
+# include <malloc.h>
 
 int		ft_strlen(char *str);
 size_t		ft_strlcpy(char *dest, char *src, size_t size);
@@ -41,5 +42,6 @@ void		*ft_memccpy(void *dest, const void *src, int c, size_t n);
 void		*ft_memmove(void *dest, const void *src, size_t n);
 void		*ft_memchr(const void *s, int c, size_t n);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
+void		*ft_calloc(size_t nmemb, size_t size);
 char		*ft_strdup(char *src);
 #endif
