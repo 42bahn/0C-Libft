@@ -6,7 +6,7 @@
 #    By: bahn <bahn@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/21 15:47:18 by bahn              #+#    #+#              #
-#    Updated: 2020/12/28 17:10:53 by bahn             ###   ########.fr        #
+#    Updated: 2020/12/29 16:49:24 by bahn             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,8 @@ FILES =	ft_strlen \
 	ft_strdup \
 	ft_substr \
 	ft_strjoin \
-	ft_strtrim
+	ft_strtrim \
+	ft_split
 
 DIR_OBJS	= ./
 OBJS		= $(addprefix $(DIR_OBJS), $(addsuffix .o, $(FILES)))
