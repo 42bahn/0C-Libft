@@ -6,7 +6,7 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 16:01:24 by bahn              #+#    #+#             */
-/*   Updated: 2020/12/30 22:08:04 by bahn             ###   ########.fr       */
+/*   Updated: 2020/12/31 00:30:45 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,17 @@ char	*ft_strtrim(char const *s1, char const *set)
 		s1_first++;
 	while (ft_strchr((char *)set, *s1_last))
 		s1_last--;
-	result = (char *)malloc(s1_last - s1_first + 2);
-	if (!result)
-		return (0);
-	ft_strlcpy(result, s1_first, s1_last - s1_first + 2);
+	if (s1_first > s1_last)
+	{
+		result = (char *)malloc(1);
+		*result = '\0';
+	}
+	else
+	{
+		result = (char *)malloc(s1_last - s1_first + 2);
+		if (!result)
+			return (0);
+		ft_strlcpy(result, s1_first, s1_last - s1_first + 2);
+	}
 	return (result);
 }
