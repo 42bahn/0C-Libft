@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jtoty <jtoty@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/28 11:58:41 by jtoty             #+#    #+#             */
-/*   Updated: 2017/08/08 16:11:12 by jtoty            ###   ########.fr       */
+/*   Created: 2017/02/28 12:19:22 by jtoty             #+#    #+#             */
+/*   Updated: 2017/03/09 15:50:09 by jtoty            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,23 @@
 #include <unistd.h>
 #include "libft.h"
 
-static void		ft_print_result2(char c)
+static void		ft_print_result(char *s)
 {
-	write(1, &c, 1);
-}
+	int		len;
 
-static void		ft_print_result(int n)
-{
-	if (n >= 0)
-	{
-		if (n >= 10)
-			ft_print_result(n / 10);
-		ft_print_result2(n % 10 + '0');
-	}
+	if (!s)
+		write(1, "NULL", 4);
 	else
 	{
-		ft_print_result2('-');
-		if (n <= -10)
-			ft_print_result(n / -10);
-		ft_print_result2(n % -10 * -1 + '0');
+		len = 0;
+		while (s[len])
+			len++;
+		write(1, s, len);
+		free(s);
 	}
 }
 
-int				 main(int argc, const char *argv[])
+int				main(int argc, const char *argv[])
 {
 	int		arg;
 
@@ -44,43 +38,25 @@ int				 main(int argc, const char *argv[])
 	if (argc == 1)
 		return (0);
 	else if ((arg = atoi(argv[1])) == 1)
-		ft_print_result(ft_atoi("0"));
+		ft_print_result(ft_itoa(0));
 	else if (arg == 2)
-		ft_print_result(ft_atoi("546:5"));
+		ft_print_result(ft_itoa(9));
 	else if (arg == 3)
-		ft_print_result(ft_atoi("-4886"));
+		ft_print_result(ft_itoa(-9));
 	else if (arg == 4)
-		ft_print_result(ft_atoi("+548"));
+		ft_print_result(ft_itoa(10));
 	else if (arg == 5)
-		ft_print_result(ft_atoi("054854"));
+		ft_print_result(ft_itoa(-10));
 	else if (arg == 6)
-		ft_print_result(ft_atoi("000074"));
+		ft_print_result(ft_itoa(8124));
 	else if (arg == 7)
-		ft_print_result(ft_atoi("+-54"));
+		ft_print_result(ft_itoa(-9874));
 	else if (arg == 8)
-		ft_print_result(ft_atoi("-+48"));
+		ft_print_result(ft_itoa(543000));
 	else if (arg == 9)
-		ft_print_result(ft_atoi("--47"));
+		ft_print_result(ft_itoa(-2147483648LL));
 	else if (arg == 10)
-		ft_print_result(ft_atoi("++47"));
-	else if (arg == 11)
-		ft_print_result(ft_atoi("+47+5"));
-	else if (arg == 12)
-		ft_print_result(ft_atoi("-47-5"));
-	else if (arg == 13)
-		ft_print_result(ft_atoi("\e475"));
-	else if (arg == 14)
-		ft_print_result(ft_atoi("\t\n\r\v\f  469 \n"));
-	else if (arg == 15)
-		ft_print_result(ft_atoi("-2147483648"));
-	else if (arg == 16)
-		ft_print_result(ft_atoi("2147483647"));
-	else if (arg == 17)
-		ft_print_result(ft_atoi("\t\n\r\v\fd469 \n"));
-	else if (arg == 18)
-		ft_print_result(ft_atoi("\n\n\n  -46\b9 \n5d6"));
-	else if (arg == 19)
-		ft_print_result(ft_atoi(""));
+		ft_print_result(ft_itoa(2147483647));
 	return (0);
 }
 /* ************************************************************************** */
@@ -90,49 +66,8 @@ int				 main(int argc, const char *argv[])
 /*                                                    +:+ +:+         +:+     */
 /*   By: jtoty <jtoty@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/28 11:58:52 by jtoty             #+#    #+#             */
-/*   Updated: 2017/03/09 15:38:29 by jtoty            ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include <stdlib.h>
-#include <unistd.h>
-#include <string.h>
-#include "libft.h"
-
-static void		check_bzero(void *mem, int c, int len, int n_bzero)
-{
-	memset(mem, c, len);
-	ft_bzero(mem, n_bzero);
-	write(1, mem, len);
-}
-
-int				main(int argc, const char *argv[])
-{
-	void	*mem;
-	int		len;
-	int		arg;
-
-	alarm(5);
-	len = 5;
-	if (argc == 1 || !(mem = malloc(sizeof(*mem) * len)))
-		return (0);
-	if ((arg = atoi(argv[1])) == 1)
-		check_bzero(mem, 'e', len, 5);
-	else if (arg == 2)
-		check_bzero(mem, 'e', len, 0);
-	free(mem);
-	return (0);
-}
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jtoty <jtoty@student.42.fr>                +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/20 11:59:07 by jtoty             #+#    #+#             */
-/*   Updated: 2019/11/20 15:38:38 by jtoty            ###   ########.fr       */
+/*   Created: 2017/02/28 12:25:56 by jtoty             #+#    #+#             */
+/*   Updated: 2017/03/09 15:50:55 by jtoty            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,20 +77,396 @@ int				main(int argc, const char *argv[])
 
 int		main(int argc, const char *argv[])
 {
-	char	*str;
+	int		i;
+	int		arg;
 
 	alarm(5);
 	if (argc == 1)
+		return (0);
+	else if ((arg = atoi(argv[1])) == 1)
+	{
+		i = 0;
+		while (i <= 47)
+		{
+			ft_putchar_fd(i, 2);
+			i++;
+		}
+	}
+	else if (arg == 2)
+	{
+		i = '0';
+		while (i <= '9')
+		{
+			ft_putchar_fd(i, 1);
+			i++;
+		}
+	}
+	else if (arg == 3)
+	{
+		i = 58;
+		while (i <= 64)
+		{
+			ft_putchar_fd(i, 2);
+			i++;
+		}
+	}
+	else if (arg == 4)
+	{
+		i = 'A';
+		while (i <= 'Z')
+		{
+			ft_putchar_fd(i, 1);
+			i++;
+		}
+	}
+	else if (arg == 5)
+	{
+		i = 91;
+		while (i <= 96)
+		{
+			ft_putchar_fd(i, 2);
+			i++;
+		}
+	}
+	else if (arg == 6)
+	{
+		i = 'a';
+		while (i <= 'z')
+		{
+			ft_putchar_fd(i, 1);
+			i++;
+		}
+	}
+	else if (arg == 7)
+	{
+		i = 123;
+		while (i <= 127)
+		{
+			ft_putchar_fd(i, 2);
+			i++;
+		}
+	}
+	return (0);
+}
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jtoty <jtoty@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/02/28 12:26:23 by jtoty             #+#    #+#             */
+/*   Updated: 2017/03/09 15:51:21 by jtoty            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdlib.h>
+#include <unistd.h>
+#include "libft.h"
+
+int		main(int argc, const char *argv[])
+{
+	int		arg;
+
+	alarm(5);
+	if (argc == 1)
+		return (0);
+	else if ((arg = atoi(argv[1])) == 1)
+		ft_putendl_fd("lorem ipsum dolor sit amet", 2);
+	else if (arg == 2)
+		ft_putendl_fd("  lorem\nipsum\rdolor\tsit amet  ", 1);
+	else if (arg == 3)
+		ft_putendl_fd("", 2);
+	else if (arg == 4)
+		ft_putendl_fd("lorem ipsum do\0lor sit amet", 1);
+	return (0);
+}
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jtoty <jtoty@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/02/28 12:30:55 by jtoty             #+#    #+#             */
+/*   Updated: 2017/03/09 15:52:10 by jtoty            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdlib.h>
+#include <unistd.h>
+#include "libft.h"
+
+int		main(int argc, const char *argv[])
+{
+	int		arg;
+
+	alarm(5);
+	if (argc == 1)
+		return (0);
+	else if ((arg = atoi(argv[1])) == 1)
+		ft_putnbr_fd(0, 2);
+	else if (arg == 2)
+		ft_putnbr_fd(5, 1);
+	else if (arg == 3)
+		ft_putnbr_fd(-5, 2);
+	else if (arg == 4)
+		ft_putnbr_fd(42, 1);
+	else if (arg == 5)
+		ft_putnbr_fd(-57, 2);
+	else if (arg == 6)
+		ft_putnbr_fd(164189, 1);
+	else if (arg == 7)
+		ft_putnbr_fd(-987441, 2);
+	else if (arg == 8)
+		ft_putnbr_fd(2147483647, 1);
+	else if (arg == 9)
+		ft_putnbr_fd(-2147483648LL, 2);
+	return (0);
+}
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jtoty <jtoty@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/02/28 12:31:21 by jtoty             #+#    #+#             */
+/*   Updated: 2017/03/09 15:52:27 by jtoty            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdlib.h>
+#include <unistd.h>
+#include "libft.h"
+
+int		main(int argc, const char *argv[])
+{
+	int		arg;
+
+	alarm(5);
+	if (argc == 1)
+		return (0);
+	else if ((arg = atoi(argv[1])) == 1)
+		ft_putstr_fd("lorem ipsum dolor sit amet", 2);
+	else if (arg == 2)
+		ft_putstr_fd("  lorem\nipsum\rdolor\tsit amet  ", 1);
+	else if (arg == 3)
+		ft_putstr_fd("", 2);
+	else if (arg == 4)
+		ft_putstr_fd("lorem ipsum do\0lor sit amet", 1);
+	return (0);
+}
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jtoty <jtoty@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/02/28 12:34:58 by jtoty             #+#    #+#             */
+/*   Updated: 2017/03/09 15:54:23 by jtoty            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdlib.h>
+#include <unistd.h>
+#include "libft.h"
+
+static void			ft_print_result(char const *s)
+{
+	int		len;
+
+	len = 0;
+	while (s[len])
+		len++;
+	write(1, s, len);
+}
+
+static void			ft_print_tabstr(char **tabstr)
+{
+	int		i;
+
+	i = 0;
+	while (tabstr[i] != NULL)
+	{
+		ft_print_result(tabstr[i]);
+		write(1, "\n", 1);
+		free(tabstr[i]);
+		i++;
+	}
+	free(tabstr);
+}
+
+static void			check_split(char *s, char c)
+{
+	char	**tabstr;
+
+	if (!(tabstr = ft_split(s, c)))
+		ft_print_result("NULL");
+	else
+		ft_print_tabstr(tabstr);
+}
+
+int					main(int argc, const char *argv[])
+{
+	int		arg;
+
+	alarm(5);
+	if (argc == 1)
+		return (0);
+	if ((arg = atoi(argv[1])) == 1)
+		check_split("          ", ' ');
+	else if (arg == 2)
+		check_split("lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse", ' ');
+	else if (arg == 3)
+		check_split("   lorem   ipsum dolor     sit amet, consectetur   adipiscing elit. Sed non risus. Suspendisse   ", ' ');
+	else if (arg == 4)
+		check_split("lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultricies diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi.", 'i');
+	else if (arg == 5)
+		check_split("lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultricies diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi.", 'z');
+	return (0);
+}
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jtoty <jtoty@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/02/28 12:33:59 by jtoty             #+#    #+#             */
+/*   Updated: 2017/03/09 15:53:29 by jtoty            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdlib.h>
+#include <unistd.h>
+#include "libft.h"
+
+static void			ft_print_result(char const *s)
+{
+	int		len;
+
+	len = 0;
+	while (s[len])
+		len++;
+	write(1, s, len);
+}
+
+static void			check_strjoin(char *s1, char *s2)
+{
+	char	*strjoin;
+
+	if (!(strjoin = ft_strjoin(s1, s2)))
+		ft_print_result("NULL");
+	else
+		ft_print_result(strjoin);
+	if (strjoin == s1 || strjoin == s2)
+		ft_print_result("\nA new string was not returned");
+	else
+		free(strjoin);
+}
+
+int					main(int argc, const char *argv[])
+{
+	char	s1[] = "lorem ipsum";
+	char	s2[] = "dolor sit amet";
+	int		arg;
+
+	alarm(5);
+	if (argc == 1)
+		return (0);
+	else if ((arg = atoi(argv[1])) == 1)
+	{
+		check_strjoin(s1, s2);
+	}
+	else if (arg == 2)
+	{
+		s1[0] = '\0';
+		check_strjoin(s1, s2);
+	}
+	else if (arg == 3)
+	{
+		s2[0] = '\0';
+		check_strjoin(s1, s2);
+	}
+	else if (arg == 4)
+	{
+		s1[0] = '\0';
+		s2[0] = '\0';
+		check_strjoin(s1, s2);
+	}
+	return (0);
+}
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jtoty <jtoty@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/02/28 12:34:20 by jtoty             #+#    #+#             */
+/*   Updated: 2017/03/09 15:53:49 by jtoty            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdlib.h>
+#include <unistd.h>
+#include <string.h>
+#include "libft.h"
+
+static void		ft_print_result(char const *s)
+{
+	int		len;
+
+	len = 0;
+	while (s[len])
+		len++;
+	write(1, s, len);
+}
+
+static char		mapi(unsigned int i, char c)
+{
+	static int indexArray[11] = {0};
+
+	if (i > 10 || indexArray[i] == 1)
+		write(1, "wrong index\n", 12);
+	else
+		indexArray[i] = 1;
+	if (c >= 'a' && c <= 'z')
+		return (c - 32);
+	else if (c >= 'A' && c <= 'Z')
+		return (c + 32);
+	else
+		return (c);
+}
+
+int				main(int argc, const char *argv[])
+{
+	char	*str;
+	char	*strmapi;
+
+	alarm(5);
+	str = (char *)malloc(sizeof(*str) * 12);
+	if (argc == 1 || !str)
 		return (0);
 	else if (atoi(argv[1]) == 1)
 	{
-		str = (char *)ft_calloc(30, sizeof(char));
-		if (!str)
-			write(1, "NULL", 4);
+		strcpy(str, "LoReM iPsUm");
+		if (!(strmapi = ft_strmapi(str, &mapi)))
+			ft_print_result("NULL");
 		else
-			write(1, str, 30);
-		free(str);
+		{
+			ft_print_result(strmapi);
+			if (strmapi[11] != '\0')
+				ft_print_result("\nString is not null terminated");
+			if (strmapi == str)
+				ft_print_result("\nA new string was not returned");
+			else
+				free(strmapi);
+		}
 	}
+	free(str);
 	return (0);
 }
 /* ************************************************************************** */
@@ -165,301 +476,13 @@ int		main(int argc, const char *argv[])
 /*                                                    +:+ +:+         +:+     */
 /*   By: jtoty <jtoty@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/28 11:59:07 by jtoty             #+#    #+#             */
-/*   Updated: 2017/03/09 15:38:38 by jtoty            ###   ########.fr       */
+/*   Created: 2017/02/28 12:35:29 by jtoty             #+#    #+#             */
+/*   Updated: 2019/11/19 23:54:44 by jtoty            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <unistd.h>
-#include <ctype.h>
-#include "libft.h"
-
-static void		ft_print_result(int n)
-{
-	if (n)
-		write(1, "1", 1);
-	else
-		write(1, "0", 1);
-}
-
-static void		check_isalnum(int start, int end)
-{
-	while (start <= end)
-	{
-		ft_print_result(ft_isalnum(start));
-		start++;
-	}
-}
-
-int				main(int argc, const char *argv[])
-{
-	int		arg;
-
-	alarm(5);
-	if (argc == 1)
-		return (0);
-	else if ((arg = atoi(argv[1])) == 1)
-		check_isalnum(0, 47);
-	else if (arg == 2)
-		check_isalnum('0', '9');
-	else if (arg == 3)
-		check_isalnum(58, 64);
-	else if (arg == 4)
-		check_isalnum('A', 'Z');
-	else if (arg == 5)
-		check_isalnum(91, 96);
-	else if (arg == 6)
-		check_isalnum('a', 'z');
-	else if (arg == 7)
-		check_isalnum(123, 127);
-	return (0);
-}
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jtoty <jtoty@student.42.fr>                +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/28 11:59:49 by jtoty             #+#    #+#             */
-/*   Updated: 2017/03/09 15:38:50 by jtoty            ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include <stdlib.h>
-#include <unistd.h>
-#include <ctype.h>
-#include "libft.h"
-
-static void		ft_print_result(int n)
-{
-	if (n)
-		write(1, "1", 1);
-	else
-		write(1, "0", 1);
-}
-
-static void		check_isalpha(int start, int end)
-{
-	while (start <= end)
-	{
-		ft_print_result(ft_isalpha(start));
-		start++;
-	}
-}
-
-int				main(int argc, const char *argv[])
-{
-	int		arg;
-
-	alarm(5);
-	if (argc == 1)
-		return (0);
-	else if ((arg = atoi(argv[1])) == 1)
-		check_isalpha(0, 47);
-	else if (arg == 2)
-		check_isalpha('0', '9');
-	else if (arg == 3)
-		check_isalpha(58, 64);
-	else if (arg == 4)
-		check_isalpha('A', 'Z');
-	else if (arg == 5)
-		check_isalpha(91, 96);
-	else if (arg == 6)
-		check_isalpha('a', 'z');
-	else if (arg == 7)
-		check_isalpha(123, 127);
-	return (0);
-}
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jtoty <jtoty@student.42.fr>                +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/28 12:00:10 by jtoty             #+#    #+#             */
-/*   Updated: 2017/03/09 15:39:02 by jtoty            ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include <stdlib.h>
-#include <unistd.h>
-#include <ctype.h>
-#include "libft.h"
-
-static void		ft_print_result(int n)
-{
-	if (n)
-		write(1, "1", 1);
-	else
-		write(1, "0", 1);
-}
-
-static void		check_isascii(int start, int end)
-{
-	while (start <= end)
-	{
-		ft_print_result(ft_isascii(start));
-		start++;
-	}
-}
-
-int				main(int argc, const char *argv[])
-{
-	int		arg;
-
-	alarm(5);
-	if (argc == 1)
-		return (0);
-	else if ((arg = atoi(argv[1])) == 1)
-		check_isascii(0, 47);
-	else if (arg == 2)
-		check_isascii('0', '9');
-	else if (arg == 3)
-		check_isascii(58, 64);
-	else if (arg == 4)
-		check_isascii('A', 'Z');
-	else if (arg == 5)
-		check_isascii(91, 96);
-	else if (arg == 6)
-		check_isascii('a', 'z');
-	else if (arg == 7)
-		check_isascii(123, 127);
-	else if (arg == 7)
-		check_isascii(128, 138);
-	return (0);
-}
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jtoty <jtoty@student.42.fr>                +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/28 12:00:21 by jtoty             #+#    #+#             */
-/*   Updated: 2017/03/09 15:39:15 by jtoty            ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include <stdlib.h>
-#include <unistd.h>
-#include <ctype.h>
-#include "libft.h"
-
-	static void	ft_print_result(int n)
-{
-	if (n)
-		write(1, "1", 1);
-	else
-		write(1, "0", 1);
-}
-
-static void		check_isdigit(int start, int end)
-{
-	while (start <= end)
-	{
-		ft_print_result(ft_isdigit(start));
-		start++;
-	}
-}
-
-int				main(int argc, const char *argv[])
-{
-	int		arg;
-
-	alarm(5);
-	if (argc == 1)
-		return (0);
-	else if ((arg = atoi(argv[1])) == 1)
-		check_isdigit(0, 47);
-	else if (arg == 2)
-		check_isdigit('0', '9');
-	else if (arg == 3)
-		check_isdigit(58, 64);
-	else if (arg == 4)
-		check_isdigit('A', 'Z');
-	else if (arg == 5)
-		check_isdigit(91, 96);
-	else if (arg == 6)
-		check_isdigit('a', 'z');
-	else if (arg == 7)
-		check_isdigit(123, 127);
-	return (0);
-}
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jtoty <jtoty@student.42.fr>                +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/28 12:00:57 by jtoty             #+#    #+#             */
-/*   Updated: 2017/03/09 15:39:25 by jtoty            ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include <stdlib.h>
-#include <unistd.h>
-#include <ctype.h>
-#include "libft.h"
-
-static void		ft_print_result(int n)
-{
-	if (n)
-		write(1, "1", 1);
-	else
-		write(1, "0", 1);
-}
-
-static void		check_isprint(int start, int end)
-{
-	while (start <= end)
-	{
-		ft_print_result(ft_isprint(start));
-		start++;
-	}
-}
-
-int				main(int argc, const char *argv[])
-{
-	int		arg;
-
-	alarm(5);
-	if (argc == 1)
-		return (0);
-	else if ((arg = atoi(argv[1])) == 1)
-		check_isprint(0, 47);
-	else if (arg == 2)
-		check_isprint('0', '9');
-	else if (arg == 3)
-		check_isprint(58, 64);
-	else if (arg == 4)
-		check_isprint('A', 'Z');
-	else if (arg == 5)
-		check_isprint(91, 96);
-	else if (arg == 6)
-		check_isprint('a', 'z');
-	else if (arg == 7)
-		check_isprint(123, 127);
-	return (0);
-}
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jtoty <jtoty@student.42.fr>                +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/28 12:01:23 by jtoty             #+#    #+#             */
-/*   Updated: 2017/03/09 15:39:32 by jtoty            ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include <stdlib.h>
-#include <unistd.h>
-#include <string.h>
 #include "libft.h"
 
 static void		ft_print_result(char const *s)
@@ -472,107 +495,52 @@ static void		ft_print_result(char const *s)
 	write(1, s, len);
 }
 
-static void		check_memccpy(void *dest, void *src, int c, int n)
+static void		check_strtrim(char *s1, char *set)
 {
-	void	*membis;
+	char	*strtrim;
 
-	membis = dest;
-	if (!(dest = ft_memccpy(dest, src, c, n)))
-	{
-		ft_print_result("NULL");
-		write(1, "\n", 1);
-		ft_print_result(membis);
-	}
-	else
-	{
-		ft_print_result(dest);
-		write(1, "\n", 1);
-		ft_print_result(membis);
-	}
-	free(membis);
-}
-
-int				main(int argc, const char *argv[])
-{
-	void	*mem;
-	int		arg;
-
-	alarm(5);
-	if (!(mem = malloc(sizeof(*mem) * 30)) || argc == 1)
-		return (0);
-	memset(mem, 'j', 29);
-	((char*)mem)[29] = '\0';
-	if ((arg = atoi(argv[1])) == 1)
-		check_memccpy(mem, "zyxwvutsrqponmlkjihgfedcba", 'r', 20);
-	else if (arg == 2)
-		check_memccpy(mem, "zyxwvutsrqponmlkjihgfedcba", 'r', 3);
-	else if (arg == 3)
-		check_memccpy(mem, "zyxwvutsrqponmlkjihgfedcba", 'a', 26);
-	else if (arg == 4)
-		check_memccpy(mem, "zyxwvuzyxwvu", 'x', 20);
-	return (0);
-}
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jtoty <jtoty@student.42.fr>                +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/28 12:01:40 by jtoty             #+#    #+#             */
-/*   Updated: 2017/03/09 15:39:41 by jtoty            ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include <stdlib.h>
-#include <unistd.h>
-#include <string.h>
-#include "libft.h"
-#include <stdio.h>
-
-static void		ft_print_result(const char *s)
-{
-	int		len;
-
-	len = 0;
-	while (s[len])
-		len++;
-	write(1, s, len);
-}
-
-static void		check_memchr(void *s, char c, int n)
-{
-	const char *str;
-
-	str = ft_memchr(s, c, n);
-	if (!str)
+	if (!(strtrim = ft_strtrim(s1, set)))
 		ft_print_result("NULL");
 	else
-		ft_print_result(str);
+		ft_print_result(strtrim);
+	if (strtrim == s1)
+		ft_print_result("\nA new string was not returned");
+	else
+		free(strtrim);
 }
 
 int				main(int argc, const char *argv[])
 {
-	int			arg;
+	char	set [] = "\t \n";
+	int		arg;
 
 	alarm(5);
 	if (argc == 1)
 		return (0);
 	else if ((arg = atoi(argv[1])) == 1)
-		check_memchr("bonjour", 'b', 4);
-	else if (arg == 2)
-		check_memchr("bonjour", 'o', 7);
-	else if (arg == 3)
-		check_memchr("bonjourno", 'n', 2);
-	else if (arg == 4)
-		check_memchr("bonjour", 'j', 6);
-	else if (arg == 5)
-		check_memchr("bonjour", 's', 7);
-	else if (arg == 6)
 	{
-		int tab[7] = {-49, 49, 1, -1, 0, -2, 2};
-
-		printf("%s", ft_memchr(tab, -1, 7));
+		char s1[] = "lorem \n ipsum \t dolor \n sit \t amet";
+		check_strtrim(s1, set);
+	}
+	else if (arg == 2)
+	{
+		char s1[] = "lorem ipsum dolor sit amet \n \t ";
+		check_strtrim(s1, set);
+	}
+	else if (arg == 3)
+	{
+		char s1[] = " \n \t lorem ipsum dolor sit amet";
+		check_strtrim(s1, set);
+	}
+	else if (arg == 4)
+	{
+		char s1[] = "  \n  \t  lorem \n ipsum \t dolor \n sit \t amet  \t \n ";
+		check_strtrim(s1, set);
+	}
+	else if (arg == 5)
+	{
+		char s1[] = "          ";
+		check_strtrim(s1, set);
 	}
 	return (0);
 }
@@ -583,202 +551,13 @@ int				main(int argc, const char *argv[])
 /*                                                    +:+ +:+         +:+     */
 /*   By: jtoty <jtoty@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/28 12:01:52 by jtoty             #+#    #+#             */
-/*   Updated: 2017/03/09 15:41:45 by jtoty            ###   ########.fr       */
+/*   Created: 2017/02/28 12:35:18 by jtoty             #+#    #+#             */
+/*   Updated: 2017/03/09 15:54:34 by jtoty            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <unistd.h>
-#include <string.h>
-#include "libft.h"
-
-static void		ft_print_result(int n)
-{
-	if (n > 0)
-		write(1, "1", 1);
-	else if (n < 0)
-		write(1, "-1", 2);
-	else
-		write(1, "0", 1);
-}
-
-int				main(int argc, const char *argv[])
-{
-	int		arg;
-
-	alarm(5);
-	if (argc == 1)
-		return (0);
-	else if ((arg = atoi(argv[1])) == 1)
-		ft_print_result(ft_memcmp("salut", "salut", 5));
-	else if (arg == 2)
-		ft_print_result(ft_memcmp("t\200", "t\0", 2));
-	else if (arg == 3)
-		ft_print_result(ft_memcmp("testss", "test", 5));
-	else if (arg == 4)
-		ft_print_result(ft_memcmp("test", "tEst", 4));
-	else if (arg == 5)
-		ft_print_result(ft_memcmp("", "test", 4));
-	else if (arg == 6)
-		ft_print_result(ft_memcmp("test", "", 4));
-	else if (arg == 7)
-		ft_print_result(ft_memcmp("abcdefghij", "abcdefgxyz", 7));
-	else if (arg == 8)
-		ft_print_result(ft_memcmp("abcdefgh", "abcdwxyz", 6));
-	else if (arg == 9)
-		ft_print_result(ft_memcmp("zyxbcdefgh", "abcdefgxyz", 0));
-	return (0);
-}
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jtoty <jtoty@student.42.fr>                +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/28 12:02:06 by jtoty             #+#    #+#             */
-/*   Updated: 2017/03/09 15:43:04 by jtoty            ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include <stdlib.h>
-#include <unistd.h>
-#include <string.h>
-#include "libft.h"
-
-static void		check_memcpy(void *dest, void *src, int n)
-{
-	if (dest != ft_memcpy(dest, src, n))
-		write(1, "dest's adress was not returned\n", 31);
-	write(1, dest, 30);
-	free(dest);
-}
-
-int				main(int argc, const char *argv[])
-{
-	void	*mem;
-	int		arg;
-
-	alarm(5);
-	if (!(mem = malloc(sizeof(*mem) * 30)) || argc == 1)
-		return (0);
-	memset(mem, 'j', 30);
-	if ((arg = atoi(argv[1])) == 1)
-		check_memcpy(mem, "zyxwvutsrqponmlkjihgfedcba", 14);
-	else if (arg == 2)
-		check_memcpy(mem, "zyxwvutst", 0);
-	else if (arg == 3)
-		check_memcpy(mem, "zy\0xw\0vu\0\0tsr", 11);
-	return (0);
-}
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jtoty <jtoty@student.42.fr>                +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/28 12:02:17 by jtoty             #+#    #+#             */
-/*   Updated: 2017/03/09 15:43:18 by jtoty            ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include <stdlib.h>
-#include <unistd.h>
-#include <string.h>
-#include "libft.h"
-
-static void		check_memmove(void *dest, void *src, int n)
-{
-	if (dest != ft_memmove(dest, src, n))
-		write(1, "dest's adress was not returned\n", 31);
-	write(1, dest, 22);
-}
-
-int				main(int argc, const char *argv[])
-{
-	char	src[] = "lorem ipsum dolor sit amet";
-	char	*dest;
-	int		arg;
-
-	dest = src + 1;
-	alarm(5);
-	if (argc == 1)
-		return (0);
-	else if ((arg = atoi(argv[1])) == 1)
-		check_memmove(dest, "consectetur", 5);
-	else if (arg == 2)
-		check_memmove(dest, "con\0sec\0\0te\0tur", 10);
-	else if (arg == 3)
-		check_memmove(dest, src, 8);
-	else if (arg == 4)
-		check_memmove(src, dest, 8);
-	else if (arg == 5)
-		check_memmove(src, dest, 0);
-	return (0);
-}
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jtoty <jtoty@student.42.fr>                +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/28 12:02:51 by jtoty             #+#    #+#             */
-/*   Updated: 2017/03/09 15:43:26 by jtoty            ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include <stdlib.h>
-#include <unistd.h>
-#include <string.h>
-#include "libft.h"
-
-static void		check_memset(void *mem, int c, int n, int mem_size)
-{
-	if (mem != ft_memset(mem, c, n))
-		write(1, "mem's adress was not returned\n", 30);
-	write(1, mem, mem_size);
-	free(mem);
-}
-
-int				main(int argc, const char *argv[])
-{
-	void	*mem;
-	int		arg;
-	int		mem_size;
-
-	alarm(5);
-	mem_size = 15;
-	if (!(mem = malloc(sizeof(*mem) * mem_size)) || argc == 1)
-		return (0);
-	memset(mem, 'j', mem_size);
-	if ((arg = atoi(argv[1])) == 1)
-		check_memset(mem, 'c', 5, mem_size);
-	else if (arg == 2)
-		check_memset(mem, 'c', 14, mem_size);
-	else if (arg == 3)
-		check_memset(mem, '\n', 6, mem_size);
-	else if (arg == 4)
-		check_memset(mem, '\0', 1, mem_size);
-	return (0);
-}
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jtoty <jtoty@student.42.fr>                +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/28 12:03:23 by jtoty             #+#    #+#             */
-/*   Updated: 2017/03/09 15:43:48 by jtoty            ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include <stdlib.h>
-#include <unistd.h>
-#include <string.h>
 #include "libft.h"
 
 static void		ft_print_result(char const *s)
@@ -791,592 +570,35 @@ static void		ft_print_result(char const *s)
 	write(1, s, len);
 }
 
-static void		check_strchr(char *s, int c, int offset)
+static void		check_substr(char *str, int start, int len)
 {
-	char		*str;
+	char	*substr;
 
-	if (!(str = ft_strchr(s, c)))
+	if (!(substr = ft_substr(str, start, len)))
 		ft_print_result("NULL");
 	else
-	{
-		ft_print_result(str);
-		if (str != (s + offset))
-			ft_print_result("\nReturn value is false");
-	}
-}
-
-int				main(int argc, const char *argv[])
-{
-	char		str2[] = "bonjour";
-	int			arg;
-
-	alarm(5);
-	if (argc == 1)
-		return (0);
-	else if ((arg = atoi(argv[1])) == 1)
-		check_strchr(str2, 'b', 0);
-	else if (arg == 2)
-		check_strchr(str2, 'o', 1);
-	else if (arg == 3)
-		check_strchr(str2, 'j', 3);
-	else if (arg == 4)
-		check_strchr(str2, 's', 0);
-	else if (arg == 5)
-		check_strchr(str2, '\0', 7);
-	else if (arg == 6)
-	{
-		char	str3[] = "";
-
-		check_strchr(str3, '\0', 0);
-	}
-	return (0);
-}
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jtoty <jtoty@student.42.fr>                +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/28 12:04:55 by jtoty             #+#    #+#             */
-/*   Updated: 2017/03/09 15:44:42 by jtoty            ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include <stdlib.h>
-#include <unistd.h>
-#include <string.h>
-#include "libft.h"
-
-static void		ft_print_result(char const *s)
-{
-	int		len;
-
-	len = 0;
-	while (s[len])
-		len++;
-	write(1, s, len);
+		ft_print_result(substr);
+	if (str == substr)
+		ft_print_result("\nA new string was not returned");
+	else
+		free(substr);
 }
 
 int				main(int argc, const char *argv[])
 {
 	char	str[] = "lorem ipsum dolor sit amet";
-	char	*str_dup;
-
-	alarm(5);
-	if (argc == 1)
-		return (0);
-	if (atoi(argv[1]) == 1)
-	{
-		if (!(str_dup = ft_strdup(str)))
-			ft_print_result("NULL");
-		else
-			ft_print_result(str_dup);
-		if (str_dup == str)
-			ft_print_result("\nstr_dup's adress == str's adress");
-		else
-			free(str_dup);
-	}
-	return (0);
-}
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jtoty <jtoty@student.42.fr>                +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/28 12:06:12 by jtoty             #+#    #+#             */
-/*   Updated: 2017/03/09 15:44:51 by jtoty            ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include <stdlib.h>
-#include <unistd.h>
-#include "libft.h"
-#include <string.h>
-
-static void		ft_print_result(int n)
-{
-	char c;
-
-	if (n >= 10)
-		ft_print_result(n / 10);
-	c = n % 10 + '0';
-	write (1, &c, 1);
-}
-
-static void		check_strlcat(char *dest, char *src, int size, int dest_len)
-{
-	ft_print_result(ft_strlcat(dest, src, size));
-	write(1, "\n", 1);
-	write(1, dest, dest_len);
-	free(dest);
-}
-
-int				main(int argc, const char *argv[])
-{
-	char	*dest;
-	int		arg;
-	int		dest_len;
-
-	alarm(5);
-	dest_len = 15;
-	if (!(dest = (char *)malloc(sizeof(*dest) * dest_len)) || argc == 1)
-		return (0);
-	memset(dest, 0, dest_len);
-	memset(dest, 'r', 6);
-	if ((arg = atoi(argv[1])) == 1)
-	{
-		dest[11] = 'a';
-		check_strlcat(dest, "lorem", 15, dest_len);
-	}
-	else if (arg == 2)
-		check_strlcat(dest, "", 15, dest_len);
-	else if (arg == 3)
-	{
-		dest[0] = '\0';
-		dest[11] = 'a';
-		check_strlcat(dest, "lorem ipsum", 15, dest_len);
-	}
-	else if (arg == 4)
-	{
-		dest[14] = 'a';
-		check_strlcat(dest, "lorem ipsum dolor sit amet", 15, dest_len);
-	}
-	else if (arg == 5)
-	{
-		dest[10] = 'a';
-		check_strlcat(dest, "lorem ipsum dolor sit amet", 0, dest_len);
-	}
-	else if (arg == 6)
-	{
-		dest[10] = 'a';
-		check_strlcat(dest, "lorem ipsum dolor sit amet", 1, dest_len);
-	}
-	else if (arg == 7)
-	{
-		memset(dest, 'r', 15);
-		check_strlcat(dest, "lorem ipsum dolor sit amet", 5, dest_len);
-	}
-	else if (arg == 8)
-	{
-		dest[10] = 'a';
-		check_strlcat(dest, "lorem ipsum dolor sit amet", 6, dest_len);
-	}
-	else if (arg == 9)
-	{
-		memset(dest, 'r', 14);
-		check_strlcat(dest, "lorem ipsum dolor sit amet", 15, dest_len);
-	}
-	return (0);
-}
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jtoty <jtoty@student.42.fr>                +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/28 15:28:06 by jtoty             #+#    #+#             */
-/*   Updated: 2017/03/09 16:01:34 by jtoty            ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include <stdlib.h>
-#include <unistd.h>
-#include <string.h>
-#include "libft.h"
-
-
-void			ft_print_result(int n)
-{
-	char c;
-
-	if (n >= 10)
-		ft_print_result(n / 10);
-	c = n % 10 + '0';
-	write (1, &c, 1);
-}
-
-static void		check_strlcpy(char *dest, char *src, int size, int dest_len)
-{
-	ft_print_result(ft_strlcpy(dest, src, size));
-	write(1, "\n", 1);
-	write(1, dest, dest_len);
-	free(dest);
-}
-
-int				main(int argc, const char *argv[])
-{
-	char	*dest;
-	int		arg;
-	int		dest_len;
-
-	alarm(5);
-	dest_len = 15;
-	if (!(dest = (char *)malloc(sizeof(*dest) * dest_len)) || argc == 1)
-		return (0);
-	memset(dest, 0, dest_len);
-	memset(dest, 'r', 6);
-	if ((arg = atoi(argv[1])) == 1)
-		check_strlcpy(dest, "lorem", 15, dest_len);
-	else if (atoi(argv[1]) == 2)
-		check_strlcpy(dest, "", 15, dest_len);
-	else if (atoi(argv[1]) == 3)
-		check_strlcpy(dest, "lorem ipsum", 3, dest_len);
-	else if (atoi(argv[1]) == 4)
-		check_strlcpy(dest, "lorem ipsum dolor sit amet", 15, dest_len);
-	else if (atoi(argv[1]) == 5)
-		check_strlcpy(dest, "lorem ipsum dolor sit amet", 0, dest_len);
-	return (0);
-}
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jtoty <jtoty@student.42.fr>                +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/28 11:58:17 by jtoty             #+#    #+#             */
-/*   Updated: 2017/03/08 18:32:39 by jtoty            ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include <stdlib.h>
-#include <unistd.h>
-#include <string.h>
-#include "libft.h"
-
-static void		ft_print_result(int n)
-{
-	char c;
-
-	if (n >= 10)
-		ft_print_result(n / 10);
-	c = n % 10 + '0';
-	write (1, &c, 1);
-}
-
-int				main(int argc, const char *argv[])
-{
 	int		arg;
 
 	alarm(5);
 	if (argc == 1)
 		return (0);
 	else if ((arg = atoi(argv[1])) == 1)
-		ft_print_result(ft_strlen("Hello !"));
+		check_substr(str, 0, 10);
 	else if (arg == 2)
-		ft_print_result(ft_strlen("1"));
+		check_substr(str, 7, 10);
 	else if (arg == 3)
-		ft_print_result(ft_strlen("lorem\tipsum\tdolor\nsit\namet\n"));
+		check_substr(str, 7, 0);
 	else if (arg == 4)
-		ft_print_result(ft_strlen(""));
-	else if (arg == 5)
-		ft_print_result(ft_strlen("\n\n\f\r\t"));
-	else if (arg == 6)
-		ft_print_result(ft_strlen("   "));
-	return (0);
-}
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jtoty <jtoty@student.42.fr>                +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/28 12:07:32 by jtoty             #+#    #+#             */
-/*   Updated: 2017/03/09 15:45:20 by jtoty            ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include <stdlib.h>
-#include <unistd.h>
-#include <string.h>
-#include "libft.h"
-
-static void		ft_print_result(int n)
-{
-	if (n > 0)
-		write(1, "1", 1);
-	else if (n < 0)
-		write(1, "-1", 2);
-	else
-		write(1, "0", 1);
-}
-
-int				main(int argc, const char *argv[])
-{
-	int		arg;
-
-	alarm(5);
-	if (argc == 1)
-		return (0);
-	else if ((arg = atoi(argv[1])) == 1)
-		ft_print_result(ft_strncmp("salut", "salut", 5));
-	else if (arg == 2)
-		ft_print_result(ft_strncmp("test", "testss", 7));
-	else if (arg == 3)
-		ft_print_result(ft_strncmp("testss", "test", 7));
-	else if (arg == 4)
-		ft_print_result(ft_strncmp("test", "tEst", 4));
-	else if (arg == 5)
-		ft_print_result(ft_strncmp("", "test", 4));
-	else if (arg == 6)
-		ft_print_result(ft_strncmp("test", "", 4));
-	else if (arg == 7)
-		ft_print_result(ft_strncmp("abcdefghij", "abcdefgxyz", 3));
-	else if (arg == 8)
-		ft_print_result(ft_strncmp("abcdefgh", "abcdwxyz", 4));
-	else if (arg == 9)
-		ft_print_result(ft_strncmp("zyxbcdefgh", "abcdwxyz", 0));
-	else if (arg == 10)
-		ft_print_result(ft_strncmp("abcdefgh", "", 0));
-	else if (arg == 11)
-		ft_print_result(ft_strncmp("test\200", "test\0", 6));
-	return (0);
-}
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jtoty <jtoty@student.42.fr>                +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/28 12:08:05 by jtoty             #+#    #+#             */
-/*   Updated: 2017/03/09 15:48:32 by jtoty            ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include <stdlib.h>
-#include <unistd.h>
-#include "libft.h"
-
-static void		ft_print_result(char const *s)
-{
-	int		len;
-
-	len = 0;
-	while (s[len])
-		len++;
-	write(1, s, len);
-}
-
-static void		check_strnstr(char *big, char *little, int len)
-{
-	const char *str;
-
-	if (!(str = ft_strnstr(big, little, len)))
-		ft_print_result("NULL");
-	else
-		ft_print_result(str);
-}
-
-int				main(int argc, const char *argv[])
-{
-	int			arg;
-
-	alarm(5);
-	if (argc == 1)
-		return (0);
-	else if ((arg = atoi(argv[1])) == 1)
-		check_strnstr("lorem ipsum dolor sit amet", "lorem", 15);
-	else if (arg == 2)
-		check_strnstr("lorem ipsum dolor sit amet", "ipsum", 15);
-	else if (arg == 3)
-		check_strnstr("lorem ipsum dolor sit lorem ipsum dolor", "ipsum", 35);
-	else if (arg == 4)
-		check_strnstr("lorem ipsum dolor sit amet", "", 10);
-	else if (arg == 5)
-		check_strnstr("lorem ipsum dolor sit amet", "ipsumm", 30);
-	else if (arg == 6)
-		check_strnstr("lorem ipsum dolor sit amet", "dol", 30);
-	else if (arg == 7)
-		check_strnstr("lorem ipsum dolor sit amet", "consectetur", 30);
-	else if (arg == 8)
-		check_strnstr("lorem ipsum dolor sit amet", "sit", 10);
-	else if (arg == 9)
-		check_strnstr("lorem ipsum dolor sit amet", "dolor", 15);
-	else if (arg == 10)
-		check_strnstr("lorem ipsum dolor sit amet", "dolor", 0);
-	return (0);
-}
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jtoty <jtoty@student.42.fr>                +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/28 12:08:30 by jtoty             #+#    #+#             */
-/*   Updated: 2017/03/09 15:48:43 by jtoty            ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include <stdlib.h>
-#include <unistd.h>
-#include <string.h>
-#include "libft.h"
-
-static void		ft_print_result(char const *s)
-{
-	int		len;
-
-	len = 0;
-	while (s[len])
-		len++;
-	write(1, s, len);
-}
-
-static void		check_strrchr(char *s, int c, int offset)
-{
-	char		*str;
-	
-	if (!(str = ft_strrchr(s, c)))
-		ft_print_result("NULL");
-	else
-	{
-		ft_print_result(str);
-		if (str != (s + offset))
-			ft_print_result("\nReturn value is false");
-	}
-}
-
-int				main(int argc, const char *argv[])
-{
-	char		str2[] = "bonjour";
-	int			arg;
-
-	alarm(5);
-	if (argc == 1)
-		return (0);
-	else if ((arg = atoi(argv[1])) == 1)
-		check_strrchr(str2, 'b', 0);
-	else if (arg == 2)
-		check_strrchr(str2, 'o', 4);
-	else if (arg == 3)
-	{
-		char	str3[]= "bonjourno";
-
-		check_strrchr(str3, 'o', 8);
-	}
-	else if (arg == 4)
-		check_strrchr(str2, 'j', 3);
-	else if (arg == 5)
-		check_strrchr(str2, 's', 0);
-	else if (arg == 6)
-		check_strrchr(str2, '\0', 7);
-	else if (arg == 7)
-	{
-		char	str3[] = "";
-
-		check_strrchr(str3, '\0', 0);
-	}
-	else if (arg == 8)
-		check_strrchr(str2 + 2, 'b', 0);
-	return (0);
-}
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jtoty <jtoty@student.42.fr>                +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/28 12:09:16 by jtoty             #+#    #+#             */
-/*   Updated: 2017/03/09 15:49:02 by jtoty            ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include <stdlib.h>
-#include <unistd.h>
-#include <ctype.h>
-#include "libft.h"
-
-static void		check_tolower(int start, int end)
-{
-	int		c;
-
-	while (start <= end)
-	{
-		c = ft_tolower(start);
-		write(1, &c, 1);
-		start++;
-	}
-}
-
-int				main(int argc, const char *argv[])
-{
-	int		arg;
-
-	alarm(5);
-	if (argc == 1)
-		return (0);
-	else if ((arg = atoi(argv[1])) == 1)
-		check_tolower(0, 47);
-	else if (arg == 2)
-		check_tolower('0', '9');
-	else if (arg == 3)
-		check_tolower(58, 64);
-	else if (arg == 4)
-		check_tolower('A', 'Z');
-	else if (arg == 5)
-		check_tolower(91, 96);
-	else if (arg == 6)
-		check_tolower('a', 'z');
-	else if (arg == 7)
-		check_tolower(123, 127);
-	return (0);
-}
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jtoty <jtoty@student.42.fr>                +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/28 12:09:27 by jtoty             #+#    #+#             */
-/*   Updated: 2017/03/09 15:49:20 by jtoty            ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include <stdlib.h>
-#include <unistd.h>
-#include <ctype.h>
-#include "libft.h"
-static void		check_toupper(int start, int end)
-{
-	int		c;
-
-	while (start <= end)
-	{
-		c = ft_toupper(start);
-		write(1, &c, 1);
-		start++;
-	}
-}
-
-int				main(int argc, const char *argv[])
-{
-	int		arg;
-
-	alarm(5);
-	if (argc == 1)
-		return (0);
-	else if ((arg = atoi(argv[1])) == 1)
-		check_toupper(0, 47);
-	else if (arg == 2)
-		check_toupper('0', '9');
-	else if (arg == 3)
-		check_toupper(58, 64);
-	else if (arg == 4)
-		check_toupper('A', 'Z');
-	else if (arg == 5)
-		check_toupper(91, 96);
-	else if (arg == 6)
-		check_toupper('a', 'z');
-	else if (arg == 7)
-		check_toupper(123, 127);
+		check_substr(str, 0, 0);
 	return (0);
 }
