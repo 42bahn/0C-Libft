@@ -6,7 +6,7 @@
 #    By: bahn <bahn@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/21 15:47:18 by bahn              #+#    #+#              #
-#    Updated: 2020/12/30 16:06:19 by bahn             ###   ########.fr        #
+#    Updated: 2020/12/30 20:17:53 by bahn             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,7 @@ FILES		=	ft_strlen \
 			ft_putendl_fd \
 			ft_putnbr_fd
 
-FILES_BONUS	= 	ft_lstnew \
+FILES_BONUS	= 	ft_lstnew #\
 			ft_lstadd_front \
 			ft_lstsize \
 			ft_lstlast \

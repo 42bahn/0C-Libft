@@ -6,7 +6,7 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 13:37:17 by bahn              #+#    #+#             */
-/*   Updated: 2020/12/30 16:25:21 by bahn             ###   ########.fr       */
+/*   Updated: 2020/12/30 20:25:37 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
 	unsigned int	i;
-	char		*fstr;
+	char			*fstr;
 
 	i = 0;
 	fstr = (char *)malloc(sizeof(char) * ft_strlen((char *)s) + 1);

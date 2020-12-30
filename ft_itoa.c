@@ -6,7 +6,7 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/29 17:49:43 by bahn              #+#    #+#             */
-/*   Updated: 2020/12/29 22:13:33 by bahn             ###   ########.fr       */
+/*   Updated: 2020/12/30 20:21:10 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 size_t	ft_nbrlen(int nbr)
 {
-	int	i;
+	int		i;
 	size_t	length;
-	int	num;
+	int		num;
 
 	i = 1;
 	length = 0;
@@ -58,7 +58,6 @@ char	*ft_itoa(int n)
 	printf("%d\n", n);
 	len = ft_nbrlen(n);
 	printf("%ld\n", len);
-	
 	if (n < 0)
 	{
 		nbr = (char *)malloc(sizeof(char) * (len + 2));
@@ -71,5 +70,4 @@ char	*ft_itoa(int n)
 		ft_putnbr(nbr, n, len);
 	}
 	return (nbr);
-	
 }
