@@ -6,7 +6,7 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 21:22:04 by bahn              #+#    #+#             */
-/*   Updated: 2020/12/31 21:21:30 by bahn             ###   ########.fr       */
+/*   Updated: 2020/12/31 21:29:14 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,10 @@ char	**ft_split(char const *s, char c)
 	while (i < cnt_strs)
 	{
 		result[i] = (char *)malloc(ft_strclen(ft_findstr(sptr, c), c) + 1);
-		ft_strlcpy(result[i], ft_findstr(sptr, c), ft_strclen(ft_findstr(sptr, c), c) + 1);
-		sptr = ft_findstr(ft_findstr(sptr, c) + ft_strclen(ft_findstr(sptr, c), c), c);
+		ft_strlcpy(result[i], ft_findstr(sptr, c),
+ft_strclen(ft_findstr(sptr, c), c) + 1);
+		sptr = ft_findstr(ft_findstr(sptr, c) +
+ft_strclen(ft_findstr(sptr, c), c), c);
 		i++;
 	}
 	return (result);

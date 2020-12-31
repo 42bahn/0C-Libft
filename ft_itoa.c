@@ -6,7 +6,7 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/29 17:49:43 by bahn              #+#    #+#             */
-/*   Updated: 2020/12/31 20:07:19 by bahn             ###   ########.fr       */
+/*   Updated: 2020/12/31 21:27:50 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 size_t	ft_nbrlen(long long nbr)
 {
-	int		i;
-	size_t	length;
+	int			i;
+	size_t		length;
 	long long	num;
 
 	i = 1;
