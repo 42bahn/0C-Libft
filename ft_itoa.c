@@ -6,17 +6,17 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/29 17:49:43 by bahn              #+#    #+#             */
-/*   Updated: 2020/12/30 20:21:10 by bahn             ###   ########.fr       */
+/*   Updated: 2020/12/31 20:07:19 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_nbrlen(int nbr)
+size_t	ft_nbrlen(long long nbr)
 {
 	int		i;
 	size_t	length;
-	int		num;
+	long long	num;
 
 	i = 1;
 	length = 0;
@@ -24,7 +24,7 @@ size_t	ft_nbrlen(int nbr)
 		num = nbr * -1;
 	else
 		num = nbr;
-	while (num / i > 10)
+	while (num / i >= 10)
 	{
 		i *= 10;
 		length++;
@@ -32,7 +32,7 @@ size_t	ft_nbrlen(int nbr)
 	return (++length);
 }
 
-void	ft_putnbr(char *ptr, int nb, size_t len)
+void	ft_putnbr(char *ptr, long long nb, size_t len)
 {
 	size_t	i;
 	size_t	divisor;
@@ -52,22 +52,22 @@ void	ft_putnbr(char *ptr, int nb, size_t len)
 
 char	*ft_itoa(int n)
 {
-	char	*nbr;
-	size_t	len;
+	char		*nbr;
+	size_t		len;
+	long long	num;
 
-	printf("%d\n", n);
-	len = ft_nbrlen(n);
-	printf("%ld\n", len);
+	num = (long long)n;
+	len = ft_nbrlen(num);
 	if (n < 0)
 	{
 		nbr = (char *)malloc(sizeof(char) * (len + 2));
-		*nbr++ = '-';
-		ft_putnbr(nbr, n * -1, len);
+		*nbr = '-';
+		ft_putnbr(nbr + sizeof(char), num * -1, len);
 	}
 	else
 	{
 		nbr = (char *)malloc(sizeof(char) * (len + 1));
-		ft_putnbr(nbr, n, len);
+		ft_putnbr(nbr, num, len);
 	}
 	return (nbr);
 }

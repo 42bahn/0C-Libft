@@ -6,7 +6,7 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/31 13:54:08 by bahn              #+#    #+#             */
-/*   Updated: 2020/12/31 16:19:29 by bahn             ###   ########.fr       */
+/*   Updated: 2020/12/31 18:36:27 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,10 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 	int	i;
 
 	i = 0;
-	while (lst[i]->next)
+	if (lst)
 	{
-		i++;
+		while (lst[i] && lst[i]->next)
+			i++;
+		lst[i]->next = new;
 	}
-	lst[i]->next = new;
 }
