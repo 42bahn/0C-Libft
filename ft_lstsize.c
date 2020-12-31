@@ -6,7 +6,7 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/31 13:27:50 by bahn              #+#    #+#             */
-/*   Updated: 2020/12/31 14:34:34 by bahn             ###   ########.fr       */
+/*   Updated: 2020/12/31 16:20:05 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	ft_lstsize(t_list *lst)
 {
-	printf("%s\n", (char *)lst->content);
 	int size;
 
 	size = 0;
