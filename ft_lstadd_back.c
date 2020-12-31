@@ -6,7 +6,7 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/31 13:54:08 by bahn              #+#    #+#             */
-/*   Updated: 2020/12/31 21:34:23 by bahn             ###   ########.fr       */
+/*   Updated: 2020/12/31 21:52:10 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,12 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 			if (lst[i]->next)
 				i++;
 			else
+			{
+				lst[i]->next = new;
 				break ;
+			}
 		}
-		lst[i]->next = new;
+		if (!lst[i])
+			lst[i] = new;
 	}
 }
