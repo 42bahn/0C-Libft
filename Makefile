@@ -6,7 +6,7 @@
 #    By: bahn <bahn@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/21 15:47:18 by bahn              #+#    #+#              #
-#    Updated: 2020/12/31 16:17:40 by bahn             ###   ########.fr        #
+#    Updated: 2021/01/01 15:36:14 by bahn             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,7 +52,7 @@ FILES_BONUS	= 	ft_lstnew \
 			ft_lstadd_back \
 			ft_lstdelone \
 			ft_lstclear \
-			ft_lstiter #\
+			ft_lstiter \
 			ft_lstmap 
 
 DIR_OBJS	= ./
