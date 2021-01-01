@@ -6,11 +6,22 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 21:22:04 by bahn              #+#    #+#             */
-/*   Updated: 2020/12/31 21:29:14 by bahn             ###   ########.fr       */
+/*   Updated: 2021/01/01 13:38:18 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+char	**ft_free_malloc(char **pptr)
+{
+	size_t	i;
+
+	i = 0;
+	while (pptr[i])
+		free(pptr[i++]);
+	free(pptr);
+	return (pptr);
+}
 
 size_t	ft_countstrs(char *s, char c)
 {
@@ -70,18 +81,21 @@ char	**ft_split(char const *s, char c)
 
 	sptr = (char *)s;
 	cnt_strs = ft_countstrs(sptr, c);
-	result = (char **)malloc(sizeof(char *) * cnt_strs);
-	if (result == NULL)
-		return (0);
+	result = (char **)malloc(sizeof(char *) * (cnt_strs + 1));
+	if (!result)
+		return (NULL);
 	i = 0;
 	while (i < cnt_strs)
 	{
 		result[i] = (char *)malloc(ft_strclen(ft_findstr(sptr, c), c) + 1);
+		if (!result[i])
+			return (ft_free_malloc(result));
 		ft_strlcpy(result[i], ft_findstr(sptr, c),
 ft_strclen(ft_findstr(sptr, c), c) + 1);
 		sptr = ft_findstr(ft_findstr(sptr, c) +
 ft_strclen(ft_findstr(sptr, c), c), c);
 		i++;
 	}
+	result[i] = NULL;
 	return (result);
 }
