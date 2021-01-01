@@ -6,7 +6,7 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/31 15:21:59 by bahn              #+#    #+#             */
-/*   Updated: 2020/12/31 16:05:17 by bahn             ###   ########.fr       */
+/*   Updated: 2021/01/01 15:23:35 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,21 @@
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list	*new;
+	t_list	*lists;
+	t_list	*list;
 
-	if (!(new = ft_lstnew(f(lst->content))))
-	{
-		ft_lstclear(&new, del);
+	if (!f || !del)
 		return (NULL);
+	lists = NULL;
+	while (lst)
+	{
+		if (!(list = ft_lstnew(f(lst->content))))
+		{
+			ft_lstclear(&lists, del);
+			return (NULL);
+		}
+		ft_lstadd_back(&lists, list);
+		lst = lst->next;
 	}
-	return (new);
+	return (lists);
 }
