@@ -6,7 +6,7 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 14:23:07 by bahn              #+#    #+#             */
-/*   Updated: 2020/12/30 14:51:03 by bahn             ###   ########.fr       */
+/*   Updated: 2021/01/01 20:50:20 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,11 @@
 
 void	ft_putstr_fd(char *c, int fd)
 {
-	while (*c != '\0')
+	while (c && *c != '\0')
 	{
-		write(fd, c++, 1);
+		if (ft_isascii(*c))
+			write(fd, c++, 1);
+		else
+			return ;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/29 17:49:43 by bahn              #+#    #+#             */
-/*   Updated: 2020/12/31 21:27:50 by bahn             ###   ########.fr       */
+/*   Updated: 2021/01/01 20:14:43 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,13 +60,15 @@ char	*ft_itoa(int n)
 	len = ft_nbrlen(num);
 	if (n < 0)
 	{
-		nbr = (char *)malloc(sizeof(char) * (len + 2));
+		if (!(nbr = (char *)malloc(sizeof(char) * (len + 2))))
+			return (NULL);
 		*nbr = '-';
 		ft_putnbr(nbr + sizeof(char), num * -1, len);
 	}
 	else
 	{
-		nbr = (char *)malloc(sizeof(char) * (len + 1));
+		if (!(nbr = (char *)malloc(sizeof(char) * (len + 1))))
+			return (NULL);
 		ft_putnbr(nbr, num, len);
 	}
 	return (nbr);

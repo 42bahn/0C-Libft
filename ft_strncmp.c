@@ -6,7 +6,7 @@
 /*   By: bahn <bahn@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/21 15:43:04 by bahn              #+#    #+#             */
-/*   Updated: 2020/12/27 22:06:33 by bahn             ###   ########.fr       */
+/*   Updated: 2021/01/01 17:17:08 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	ft_strncmp(char *s1, char *s2, size_t n)
 		else
 			return (ptr1[i] - ptr2[i]);
 	}
-	if (ptr1[i] == '\0')
+	if (ptr1[i] == '\0' && i != n)
 		return (ptr1[i] - ptr2[i]);
 	return (0);
 }

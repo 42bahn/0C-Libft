@@ -6,7 +6,7 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/31 13:34:13 by bahn              #+#    #+#             */
-/*   Updated: 2020/12/31 13:53:47 by bahn             ###   ########.fr       */
+/*   Updated: 2021/01/01 20:58:46 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 t_list	*ft_lstlast(t_list *lst)
 {
+	if (!lst)
+		return (NULL);
 	while (lst->next)
-	{
 		lst = lst->next;
-	}
 	return (lst);
 }
