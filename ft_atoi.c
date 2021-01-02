@@ -6,9 +6,11 @@
 /*   By: bahn <bahn@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/21 15:46:58 by bahn              #+#    #+#             */
-/*   Updated: 2021/01/01 19:03:13 by bahn             ###   ########.fr       */
+/*   Updated: 2021/01/02 12:22:12 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 char	*ft_isspace(char *str)
 {
@@ -22,8 +24,8 @@ char	*ft_isspace(char *str)
 
 int		ft_atoi(char *str)
 {
-	long sign;
-	long nbr;
+	long long sign;
+	long long nbr;
 
 	sign = 1;
 	nbr = 0;
@@ -42,8 +44,8 @@ int		ft_atoi(char *str)
 		str++;
 	}
 	if (nbr * sign > 2147483647)
-		return (-1);
-	if (nbr * sign < -2147483648)
 		return (0);
+	if (nbr * sign < -2147483648)
+		return (-1);
 	return (nbr * sign);
 }
