@@ -6,7 +6,7 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 14:23:07 by bahn              #+#    #+#             */
-/*   Updated: 2021/01/01 20:51:40 by bahn             ###   ########.fr       */
+/*   Updated: 2021/01/02 13:52:48 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	ft_putendl_fd(char *c, int fd)
 	char lf;
 
 	lf = '\n';
+	if (fd < 0)
+		return ;
 	while (c && *c != '\0')
 	{
 		write(fd, c++, 1);

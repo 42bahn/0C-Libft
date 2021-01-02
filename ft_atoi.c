@@ -6,7 +6,7 @@
 /*   By: bahn <bahn@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/21 15:46:58 by bahn              #+#    #+#             */
-/*   Updated: 2021/01/02 12:22:12 by bahn             ###   ########.fr       */
+/*   Updated: 2021/01/02 15:22:29 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,11 @@ int		ft_atoi(char *str)
 	while ((*str != '\0') && (*str >= '0' && *str <= '9'))
 	{
 		nbr = (nbr * 10) + (*str - 48);
+		if (nbr * sign > 2147483647)
+			return (-1);
+		else if (nbr * sign < -2147483648)
+			return (0);
 		str++;
 	}
-	if (nbr * sign > 2147483647)
-		return (0);
-	if (nbr * sign < -2147483648)
-		return (-1);
 	return (nbr * sign);
 }
