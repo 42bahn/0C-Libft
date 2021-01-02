@@ -11,7 +11,23 @@ Test code:
 	ft_memcpy("            ", ((void *)0), 17);
 
 
-ft_memccpy:    [OK] [OK] [OK] [FAILED] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] 
+ft_memccpy:    [FAILED] [OK] [OK] [FAILED] [FAILED] [OK] [OK] [NO CRASH] [OK] [OK] [OK] [OK] 
+[fail]: your memccpy doesn't work with basic params
+Test code:
+	char src[] = "test basic du memccpy !";
+	char buff1[22];
+	char buff2[22];
+
+	__builtin___memccpy_chk (buff1, src, 'm', 6, __builtin_object_size (buff1, 0));
+	ft_memccpy(buff2, src, 'm', 6);
+	if (!memcmp(buff1, buff2, 6))
+		exit(TEST_SUCCESS);
+	exit(TEST_FAILED);
+
+Diffs:
+     memccpy: |test b|
+  ft_memccpy: ||
+
 [fail]: your memccpy's return is false/doesn't work with basic params
 Test code:
 	char src[] = "test basic du memccpy !";
@@ -30,7 +46,28 @@ Test code:
 
 Diffs:
      memccpy: ||
-  ft_memccpy: |(null)|
+  ft_memccpy: ||
+
+[fail]: your memccpy does not work with not found char
+Test code:
+	char src[] = "test basic du memccpy !";
+	char buff1[22];
+	char buff2[22];
+	char *r1 = __builtin___memccpy_chk (buff1, src, 'z', 22, __builtin_object_size (buff1, 0));
+	char *r2 = ft_memccpy(buff2, src, 'z', 22);
+
+	if (r1 == r2)
+		exit(TEST_SUCCESS);
+	exit(TEST_FAILED);
+
+Diffs:
+     memccpy: |(null)|
+  ft_memccpy: ||
+
+[no crash]: your memccpy does not segfault dst is not big enough
+Test code:
+	ft_memccpy("", "segfaulter tu dois", '\0', 17);
+
 
 ft_memmove:    [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [NO CRASH] [NO CRASH] [OK] [OK] [OK] 
 [no crash]: your memmove does not segfault when null params is sent
@@ -63,13 +100,14 @@ ft_strncmp:    [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] 
 ft_strlcpy:    [OK] [OK] [OK] [OK] [OK] [OK] {not protected}
 ft_strlcat:    [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] 
 ft_strnstr:    [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] 
-ft_atoi:       [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [KO] [KO] [OK] [OK] [OK] [OK] 
-[KO]: your atoi does not work with over long max value
+ft_atoi:       [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [KO] [KO] [OK] [OK] [OK] [OK] [OK] [OK] 
+[KO]: your atoi does not work with long max value
 Test code:
-	char n[40] = "99999999999999999999999999";
+	char n[40];
+
+	__builtin___sprintf_chk (n, 0, __builtin_object_size (n, 2 > 1 ? 1 : 0), "%li", 9223372036854775807L);
 	int i1 = atoi(n);
 	int i2 = ft_atoi(n);
-
 	if (i1 == i2)
 		exit(TEST_SUCCESS);
 	exit(TEST_KO);
@@ -78,12 +116,13 @@ Diffs:
         atoi: |-1|
      ft_atoi: |0|
 
-[KO]: your atoi does not work with over long min value
+[KO]: your atoi does not work with long min value
 Test code:
-	char n[40] = "-99999999999999999999999999";
+	char n[40];
+
+	__builtin___sprintf_chk (n, 0, __builtin_object_size (n, 2 > 1 ? 1 : 0), "%li", (-9223372036854775807L -1L));
 	int i1 = atoi(n);
 	int i2 = ft_atoi(n);
-
 	if (i1 == i2)
 		exit(TEST_SUCCESS);
 	exit(TEST_KO);
