@@ -6,7 +6,7 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/27 20:19:32 by bahn              #+#    #+#             */
-/*   Updated: 2021/01/02 14:59:33 by bahn             ###   ########.fr       */
+/*   Updated: 2021/01/02 15:37:50 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	*ft_memccpy(void *dest, const void *src, int c, size_t n)
 	while (n--)
 	{
 		*dptr = *sptr;
-		if (*dptr == (char)c)
+		if (*dptr == (unsigned char)c)
 			return ((void *)(++dptr));
 		dptr++;
 		sptr++;
