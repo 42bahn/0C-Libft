@@ -6,18 +6,18 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 14:59:00 by bahn              #+#    #+#             */
-/*   Updated: 2021/01/02 13:53:18 by bahn             ###   ########.fr       */
+/*   Updated: 2021/01/02 17:39:59 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putchar(char c, int fd)
+static	void	ft_putchar(char c, int fd)
 {
 	write(fd, &c, 1);
 }
 
-void	ft_putnbr_fd(int n, int fd)
+void			ft_putnbr_fd(int n, int fd)
 {
 	char c;
 

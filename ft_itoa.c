@@ -6,13 +6,13 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/29 17:49:43 by bahn              #+#    #+#             */
-/*   Updated: 2021/01/01 20:14:43 by bahn             ###   ########.fr       */
+/*   Updated: 2021/01/02 17:39:39 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_nbrlen(long long nbr)
+size_t			ft_nbrlen(long long nbr)
 {
 	int			i;
 	size_t		length;
@@ -32,7 +32,7 @@ size_t	ft_nbrlen(long long nbr)
 	return (++length);
 }
 
-void	ft_putnbr(char *ptr, long long nb, size_t len)
+static	void	ft_putnbr(char *ptr, long long nb, size_t len)
 {
 	size_t	i;
 	size_t	divisor;
@@ -50,7 +50,7 @@ void	ft_putnbr(char *ptr, long long nb, size_t len)
 	*ptr = '\0';
 }
 
-char	*ft_itoa(int n)
+char			*ft_itoa(int n)
 {
 	char		*nbr;
 	size_t		len;
