@@ -77,11 +77,11 @@ Header file[15GNorme
 [0m[36mft_lstdelone[23G[32mok[0m[38G[32msuccess[0m[50G[32mclean[0m[67G[32m✓[0m[87G[32mOK
 [0m[36mft_lstiter[23G[32mok[0m[38G[32msuccess[0m[50G[32mclean[0m[67G[32m✓[0m[87G[32mOK
 [0m[36mft_lstlast[23G[32mok[0m[38G[32msuccess[0m[50G[32mclean[0m[67G[32m✓[0m[32m✓[0m[87G[32mOK
-[0m[36mft_lstmap[23G[32mok[0m[38G[32msuccess[0m[50G[32mclean[0m[67G[32m✓[0m[87G[32mOK
+[0m[36mft_lstmap[23G[32mok[0m[38G[32msuccess[0m[50G[32mclean[0m[67G[31m✗[0m[87G[31mKO
 [0m[36mft_lstnew[23G[32mok[0m[38G[32msuccess[0m[50G[32mclean[0m[67G[32m✓[0m[32m✓[0m[32m✓[0m[87G[32mOK
 [0m[36mft_lstsize[23G[32mok[0m[38G[32msuccess[0m[50G[32mclean[0m[67G[32m✓[0m[32m✓[0m[32m✓[0m[87G[32mOK
 [0m
-[1m[33mTotal : 9/9[0m
+[1m[33mTotal : 8/9[0m
 Abort : [31mA[0m Bus error : [31mB[0m Segmentation fault : [31mS[0m Timeout : [31mT[0m Nothing turned in : [31mNTI[0m
 
 A deepthought file has been generated in [1m[35m/Users/bahn/Libftest
