@@ -6,7 +6,7 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/31 15:21:59 by bahn              #+#    #+#             */
-/*   Updated: 2021/01/02 17:26:22 by bahn             ###   ########.fr       */
+/*   Updated: 2021/01/03 15:19:40 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	size_t	i;
 	t_list	**lists;
 
-	if (!f)
-		return (NULL);
 	lists = (t_list **)malloc(sizeof(t_list *) * (ft_lstsize(lst) + 1));
 	i = 0;
 	while (lst)
