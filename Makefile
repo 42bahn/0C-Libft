@@ -6,7 +6,7 @@
 #    By: bahn <bahn@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/21 15:47:18 by bahn              #+#    #+#              #
-#    Updated: 2021/01/01 15:36:14 by bahn             ###   ########.fr        #
+#    Updated: 2021/01/04 00:21:46 by bahn             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -75,8 +75,11 @@ NAME		= libft.a
 
 all:		$(NAME)
 
-$(NAME):	$(OBJS) $(OBJS_BONUS)
-		$(AR) $(NAME) $(OBJS) $(OBJS_BONUS)
+$(NAME):	$(OBJS)
+		$(AR) $(NAME) $(OBJS)
+
+bonus:		$(OBJS_BONUS)
+		$(AR) $(NAME) $(OBJS_BONUS)
 
 clean: 
 		$(RM) $(OBJS) $(OBJS_BONUS)
