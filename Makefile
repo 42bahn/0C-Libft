@@ -6,7 +6,7 @@
 #    By: bahn <bahn@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/21 15:47:18 by bahn              #+#    #+#              #
-#    Updated: 2021/01/04 00:21:46 by bahn             ###   ########.fr        #
+#    Updated: 2021/01/04 00:28:51 by bahn             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -89,4 +89,4 @@ fclean: 	clean
 
 re: 		fclean all
 
-.PHONY:		all clean fclean re
+.PHONY:		all bonus clean fclean re 
