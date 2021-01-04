@@ -6,7 +6,7 @@
 /*   By: bahn <bahn@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/21 15:46:58 by bahn              #+#    #+#             */
-/*   Updated: 2021/01/03 15:27:48 by bahn             ###   ########.fr       */
+/*   Updated: 2021/01/04 14:42:25 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static	char	*ft_isspace(char *str)
 	return (str);
 }
 
-int		ft_atoi(char *str)
+int				ft_atoi(char *str)
 {
 	long long sign;
 	long long nbr;
