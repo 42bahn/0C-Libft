@@ -6,18 +6,13 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 14:59:00 by bahn              #+#    #+#             */
-/*   Updated: 2021/01/02 17:39:59 by bahn             ###   ########.fr       */
+/*   Updated: 2021/01/04 14:22:06 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static	void	ft_putchar(char c, int fd)
-{
-	write(fd, &c, 1);
-}
-
-void			ft_putnbr_fd(int n, int fd)
+void	ft_putnbr_fd(int n, int fd)
 {
 	char c;
 
@@ -28,13 +23,13 @@ void			ft_putnbr_fd(int n, int fd)
 	{
 		if (n / 10 > 0)
 			ft_putnbr_fd(n / 10, fd);
-		ft_putchar(c + n % 10, fd);
+		ft_putchar_fd(c + (n % 10), fd);
 	}
 	else
 	{
-		ft_putchar('-', fd);
+		ft_putchar_fd('-', fd);
 		if ((n / 10) * -1 > 0)
 			ft_putnbr_fd((n / 10) * -1, fd);
-		ft_putchar(c + ((n % 10) * -1), fd);
+		ft_putchar_fd(c + ((n % 10) * -1), fd);
 	}
 }
