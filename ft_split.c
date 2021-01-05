@@ -6,13 +6,13 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 21:22:04 by bahn              #+#    #+#             */
-/*   Updated: 2021/01/02 12:29:31 by bahn             ###   ########.fr       */
+/*   Updated: 2021/01/05 22:25:26 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	**ft_free_malloc(char **pptr)
+static	char	**ft_free_malloc(char **pptr)
 {
 	size_t	i;
 
@@ -23,7 +23,7 @@ char	**ft_free_malloc(char **pptr)
 	return (pptr);
 }
 
-size_t	ft_countstrs(char *s, char c)
+static	size_t	ft_countstrs(char *s, char c)
 {
 	size_t	cnt;
 
@@ -45,7 +45,7 @@ size_t	ft_countstrs(char *s, char c)
 	return (cnt);
 }
 
-char	*ft_findstr(char *s, char c)
+static	char	*ft_findstr(char *s, char c)
 {
 	while (*s != '\0')
 	{
@@ -57,7 +57,7 @@ char	*ft_findstr(char *s, char c)
 	return (0);
 }
 
-size_t	ft_strclen(char *s, char c)
+static	size_t	ft_strclen(char *s, char c)
 {
 	size_t	length;
 	char	*ptr;
@@ -72,7 +72,7 @@ size_t	ft_strclen(char *s, char c)
 	return (length);
 }
 
-char	**ft_split(char const *s, char c)
+char			**ft_split(char const *s, char c)
 {
 	char	**result;
 	char	*sptr;

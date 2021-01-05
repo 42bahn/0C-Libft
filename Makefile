@@ -6,7 +6,7 @@
 #    By: bahn <bahn@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/21 15:47:18 by bahn              #+#    #+#              #
-#    Updated: 2021/01/04 00:28:51 by bahn             ###   ########.fr        #
+#    Updated: 2021/01/05 22:38:35 by bahn             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,30 +62,30 @@ DIR_SRCS	= ./
 SRCS		= $(addprefix $(DIR_SRCS), $(addsuffix .c, $(FILES)))
 SRCS_BONUS	= $(addprefix $(DIR_SRCS), $(addsuffix .c, $(FILES_BUNUS)))
 
-CC		= gcc
-CFLAGS		= -Wall -Wextra -Werror #-g -l.
+CC			= gcc
+CFLAGS		= -Wall -Wextra -Werror
 
-AR		= ar crs
-RM		= rm -f
+AR			= ar crs
+RM			= rm -f
 
 NAME		= libft.a
 
 .c.o:		$(SRCS) $(SRCS_BONUS)
-		$(CC) $(CFLAGS) -c -o $@ $<
+			$(CC) $(CFLAGS) -c -o $@ $<
 
 all:		$(NAME)
 
 $(NAME):	$(OBJS)
-		$(AR) $(NAME) $(OBJS)
+			$(AR) $(NAME) $(OBJS)
 
 bonus:		$(OBJS_BONUS)
-		$(AR) $(NAME) $(OBJS_BONUS)
+			$(AR) $(NAME) $(OBJS_BONUS)
 
 clean: 
-		$(RM) $(OBJS) $(OBJS_BONUS)
+			$(RM) $(OBJS) $(OBJS_BONUS)
 
 fclean: 	clean
-		$(RM) $(NAME)
+			$(RM) $(NAME)
 
 re: 		fclean all
 
