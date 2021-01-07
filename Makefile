@@ -6,54 +6,54 @@
 #    By: bahn <bahn@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/21 15:47:18 by bahn              #+#    #+#              #
-#    Updated: 2021/01/05 22:38:35 by bahn             ###   ########.fr        #
+#    Updated: 2021/01/07 15:59:37 by bahn             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 FILES		=	ft_strlen \
-			ft_strlcpy \
-			ft_strlcat \
-			ft_strchr \
-			ft_strrchr \
-			ft_strnstr \
-			ft_strncmp \
-			ft_atoi \
-			ft_isalpha \
-			ft_isdigit \
-			ft_isalnum \
-			ft_isascii \
-			ft_isprint \
-			ft_toupper \
-			ft_tolower \
-			ft_memset \
-			ft_bzero \
-			ft_memcpy \
-			ft_memccpy \
-			ft_memchr \
-			ft_memmove \
-			ft_memcmp \
-			ft_calloc \
-			ft_strdup \
-			ft_substr \
-			ft_strjoin \
-			ft_strtrim \
-			ft_split \
-			ft_itoa \
-			ft_strmapi \
-			ft_putchar_fd \
-			ft_putstr_fd \
-			ft_putendl_fd \
-			ft_putnbr_fd
+				ft_strlcpy \
+				ft_strlcat \
+				ft_strchr \
+				ft_strrchr \
+				ft_strnstr \
+				ft_strncmp \
+				ft_atoi \
+				ft_isalpha \
+				ft_isdigit \
+				ft_isalnum \
+				ft_isascii \
+				ft_isprint \
+				ft_toupper \
+				ft_tolower \
+				ft_memset \
+				ft_bzero \
+				ft_memcpy \
+				ft_memccpy \
+				ft_memchr \
+				ft_memmove \
+				ft_memcmp \
+				ft_calloc \
+				ft_strdup \
+				ft_substr \
+				ft_strjoin \
+				ft_strtrim \
+				ft_split \
+				ft_itoa \
+				ft_strmapi \
+				ft_putchar_fd \
+				ft_putstr_fd \
+				ft_putendl_fd \
+				ft_putnbr_fd
 
 FILES_BONUS	= 	ft_lstnew \
-			ft_lstadd_front \
-			ft_lstsize \
-			ft_lstlast \
-			ft_lstadd_back \
-			ft_lstdelone \
-			ft_lstclear \
-			ft_lstiter \
-			ft_lstmap 
+				ft_lstadd_front \
+				ft_lstsize \
+				ft_lstlast \
+				ft_lstadd_back \
+				ft_lstdelone \
+				ft_lstclear \
+				ft_lstiter \
+				ft_lstmap 
 
 DIR_OBJS	= ./
 OBJS		= $(addprefix $(DIR_OBJS), $(addsuffix .o, $(FILES)))
