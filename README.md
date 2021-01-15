@@ -311,7 +311,6 @@ $<는 첫 prerequisite를 저장하는 변수입니다.
     특정 구분 문자를 기준으로 문자열을 잘라내어 각 자른 문자열을 메모리 공간에 저장.
 
 <img src="https://dojang.io/pluginfile.php/342/mod_page/content/18/unit34-25.png">
-<img src="">
 
     ft_countstrs : c를 기준으로 자른 문자열들의 개수를 구하는 함수.
 
