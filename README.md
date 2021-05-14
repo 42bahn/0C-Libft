@@ -1,4 +1,8 @@
 # 0C-Libft
+[Libftest](https://github.com/jtoty/Libftest)
+
+위 저장소의 테스트 프로그램을 사용했다. 가장 기본적이고, bonus 파트의 함수들까지 테스트가 가능하다.
+
 [libft-unit-test](https://github.com/alelievr/libft-unit-test)
 
 메모리 누수, segmentation fault, 오버플로우 여부를 확인할 수 있다. 실제 함수들과의 처리 속도를 비교해주는 bench mode도 지원한다.
