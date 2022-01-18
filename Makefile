@@ -3,12 +3,20 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bahn <bahn@student.42.fr>                  +#+  +:+       +#+         #
+#    By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/21 15:47:18 by bahn              #+#    #+#              #
-#    Updated: 2021/01/07 15:59:37 by bahn             ###   ########.fr        #
+#    Updated: 2022/01/19 00:45:21 by bahn             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+CC			= gcc
+CFLAGS		= -Wall -Wextra -Werror -g
+
+AR			= ar crs
+RM			= rm -f
+
+NAME		= libft.a
 
 FILES		=	ft_strlen \
 				ft_strlcpy \
@@ -62,18 +70,10 @@ DIR_SRCS	= ./
 SRCS		= $(addprefix $(DIR_SRCS), $(addsuffix .c, $(FILES)))
 SRCS_BONUS	= $(addprefix $(DIR_SRCS), $(addsuffix .c, $(FILES_BUNUS)))
 
-CC			= gcc
-CFLAGS		= -Wall -Wextra -Werror
-
-AR			= ar crs
-RM			= rm -f
-
-NAME		= libft.a
+all:		$(NAME)
 
 .c.o:		$(SRCS) $(SRCS_BONUS)
 			$(CC) $(CFLAGS) -c -o $@ $<
-
-all:		$(NAME)
 
 $(NAME):	$(OBJS)
 			$(AR) $(NAME) $(OBJS)
