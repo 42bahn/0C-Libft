@@ -6,7 +6,7 @@
 #    By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/21 15:47:18 by bahn              #+#    #+#              #
-#    Updated: 2022/01/23 23:26:23 by bahn             ###   ########.fr        #
+#    Updated: 2022/01/23 23:38:17 by bahn             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -82,10 +82,10 @@ bonus: $(OBJS_BONUS)
 	@$(AR) $(NAME) $(OBJS_BONUS)
 
 clean: 
-	@$(RM) $(OBJS) $(OBJS_BONUS)
+	-@ $(RM) $(OBJS) $(OBJS_BONUS)
 
 fclean: clean
-	@$(RM) $(NAME)
+	-@ $(RM) $(NAME)
 
 re: fclean all
 
