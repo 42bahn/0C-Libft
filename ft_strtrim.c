@@ -6,7 +6,7 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/28 16:01:24 by bahn              #+#    #+#             */
-/*   Updated: 2022/01/24 14:39:22 by bahn             ###   ########.fr       */
+/*   Updated: 2022/01/24 15:06:03 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,26 @@ static char	*last_point(char const *first, char const *set)
 	return (last);
 }
 
+static int	set_checker(char *str, char const *set)
+{
+	char	*ptr;
+
+	if (ft_strlen(str) == 0)
+		return (1);
+	ptr = (char *)set;
+	if (ft_strlen(str) == 1)
+	{
+		while (*ptr != '\0')
+		{
+			if (*ptr == *str)
+				return (1);
+			ptr++;
+		}
+		return (0);
+	}
+	return (0);
+}
+
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	char	*result;
@@ -42,7 +62,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 
 	if (!s1)
 		return (NULL);
-	if (ft_strlen((char *)s1) == 0)
+	if (set_checker(s1, set))
 		return (ft_strdup(""));
 	s1_first = start_point(s1, set);
 	s1_last = last_point(s1, set);
