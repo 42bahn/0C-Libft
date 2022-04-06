@@ -1,6 +1,4 @@
-# Libft 
-
-[![bahn's 42 Libft Score](https://badge42.vercel.app/api/v2/cl1n6fb2j003009l0lfanbfyx/project/2060543)](https://github.com/JaeSeoKim/badge42)
+# Libft [![bahn's 42 Libft Score](https://badge42.vercel.app/api/v2/cl1n6fb2j003009l0lfanbfyx/project/2060543)](https://github.com/JaeSeoKim/badge42)
 
 위 저장소의 테스트 프로그램을 사용했다. 가장 기본적이고, bonus 파트의 함수들까지 테스트가 가능하다.
 
